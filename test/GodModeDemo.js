@@ -1,10 +1,10 @@
-const GMIT = require("godmode-in-testnet");
+const GM = require("godmode-for-test");
 const HasOwnerShip = artifacts.require("HasOwnerShip");
 const HasOwnerShipInstrumented = artifacts.require("HasOwnerShipInstrumented");
 const HasOwnerShipSETOWNER = artifacts.require("HasOwnerShipSETOWNER");
 
 // SETUP GMIT
-let GODMODE = new GMIT("development", "ws://localhost:8545");
+let GODMODE = new GM("development", "ws://localhost:8545");
 
 
 contract("HasOwnerShip GodMode Demo", function(accounts) {
