@@ -1,27 +1,23 @@
 pragma solidity 0.5.16;
 
-contract HasOwnerShipInstrumented {
+contract HasOwnerShipInstrumented{
   
   address public owner;
   bool public flag;
-  bool public normalFlag;
 
   constructor() public {
-    owner = msg.sender;
+    owner = msg.sender;   // <------- SET DURING DEPLOYMENT
     flag = false;
   }
 
   modifier onlyOwner(){
-    require(1 == 1);
+    require(msg.sender == owner);
     _;
   }
 
-  function priviledgedAction(bool newFlag) onlyOwner public {
-    flag = newFlag;
-  }
 
-  function normalAction(bool newNormalFlag) public {
-    normalFlag = newNormalFlag;
+  function priviledgedAction(bool newFlag) public {
+    flag = newFlag;
   }
 
 }

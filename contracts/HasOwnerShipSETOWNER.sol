@@ -4,10 +4,9 @@ contract HasOwnerShipSETOWNER{
   
   address public owner;
   bool public flag;
-  bool public normalFlag;
 
   constructor() public {
-    owner = msg.sender;
+    owner = msg.sender;   // <------- SET DURING DEPLOYMENT
     flag = false;
   }
 
@@ -16,16 +15,13 @@ contract HasOwnerShipSETOWNER{
     _;
   }
 
+  //                                       onlyOwner
   function priviledgedAction(bool newFlag) onlyOwner public {
     flag = newFlag;
   }
 
-  function normalAction(bool newNormalFlag) public {
-    normalFlag = newNormalFlag;
-  }
 
   function setOwner() public {
     owner = msg.sender;
   }
-
 }
