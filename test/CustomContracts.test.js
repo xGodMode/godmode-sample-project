@@ -14,18 +14,17 @@ const UniswapV2PairContract = artifacts.require("UniswapV2PairContract");
 const CErc20Contract = artifacts.require("CErc20Contract");
 const Dai = artifacts.require("Dai");
 
-
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";  
 
-let GODMODE = new GM("development", "http://34.212.163.248/api");
+let GODMODE = new GM("development", "<rpc_endpoint>");
 
-contract("GodMode Demo - Custom Contracts", function(accounts) {
+contract("Custom Contracts", function(accounts) {
 
   const Alex = accounts[1];
   const Beth = accounts[2];
   const Carl = accounts[3];
 
-  describe("HasOwnerShip", function(){
+  describe("\nHasOwnerShip", function(){
     let hasOwnerShipContract;
     beforeEach(async function() {
       hasOwnerShipContract = await HasOwnerShip.new({ from: Alex });
@@ -51,7 +50,7 @@ contract("GodMode Demo - Custom Contracts", function(accounts) {
     });
   });
 
-  describe("HasOwnerShip in GODMODE", function(){
+  describe("\nHasOwnerShip in GODMODE", function(){
     let hasOwnerShipContract;
 
     beforeEach(async function() {
@@ -62,7 +61,7 @@ contract("GodMode Demo - Custom Contracts", function(accounts) {
       await GODMODE.close();
     });
 
-    it("GODMODE allows Beth access to the privilegedAction!", async function(){
+    it("GODMODE: allows Beth access to the privilegedAction!", async function(){
 
       // Boolean starts as false
       let startingFlag = await hasOwnerShipContract.flag();
@@ -82,7 +81,7 @@ contract("GodMode Demo - Custom Contracts", function(accounts) {
       assert.equal(endingFlag, true);
     });
 
-    it("GODMODE allows Beth to become the owner!", async function(){
+    it("GODMODE: allows Beth to become the owner!", async function(){
 
       // Owner starts as Alex
       let startingOwner = await hasOwnerShipContract.owner();
@@ -99,16 +98,10 @@ contract("GodMode Demo - Custom Contracts", function(accounts) {
       // Beth is indeed the owner
       let endingOwner = await hasOwnerShipContract.owner();
       assert.equal(endingOwner, Beth);
-
-      // Bob sets the flag, SUCCEED!
-      // await hasOwnerShipContract.priviledgedAction(true ,{from: Bob});
-      // assert.equal(await hasOwnerShipContract.flag(), true);      
-
     });
   });
 
 });
-
 
 /**
  * Checks that a transaction failed when it was intended to, throws otherwise.
@@ -139,3 +132,4 @@ async function assertTxFail(promise, msg) {
   
   assert.fail("The transaction was expected to fail, but it did not");
 }
+
