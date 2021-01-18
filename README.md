@@ -1,5 +1,4 @@
 ![GodMode Logo](https://godmode-assets-temporary.s3.eu-west-3.amazonaws.com/godmode_logo.jpg)
-![Downloads](https://img.shields.io/github/downloads/xGodMode/godmode-sample-project/total)
 
 This sample project demonstrates how GodMode allows you to gain control of contracts running on an instance of Ganache CLI.
 
@@ -9,7 +8,7 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
 
 ---
 
-1. Download and install dependencies for the [GodMode Ganache CLI]("https://github.com/xGodMode/godmode-ganache-cli").
+1. Download and install dependencies for the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli).
 
 2. Clone this repository and run `$ npm install`
 
