@@ -1,4 +1,4 @@
-![GodMode Logo](https://godmode-assets-temporary.s3.eu-west-3.amazonaws.com/godmode_logo.jpg)
+![GodMode Logo](https://godmode-public-assets.s3.amazonaws.com/godmode_logo.jpg)
 
 This sample project demonstrates how GodMode allows you to gain control of contracts running on an instance of Ganache CLI.
 
