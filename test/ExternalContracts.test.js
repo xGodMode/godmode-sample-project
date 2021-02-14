@@ -5,13 +5,8 @@
  *
  */
 
-const GM = require("godmode-for-test");
-const HasOwnerShip = artifacts.require("HasOwnerShip");
-const HasOwnerShipInstrumented = artifacts.require("HasOwnerShipInstrumented");
-const HasOwnerShipSETOWNER = artifacts.require("HasOwnerShipSETOWNER");
-const UniswapV2ERC20Contract = artifacts.require("UniswapV2ERC20Contract");
+const GM = require("@xgm/godmode");
 const UniswapV2FactoryContract = artifacts.require("UniswapV2FactoryContract");
-const UniswapV2PairContract = artifacts.require("UniswapV2PairContract");
 const CErc20Contract = artifacts.require("CErc20Contract");
 const Dai = artifacts.require("Dai");
 

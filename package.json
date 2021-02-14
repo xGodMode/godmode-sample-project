@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "license": "MIT",
   "dependencies": {
-    "godmode-for-test": "0.0.3",
+    "@xgm/godmode": "https://github.com/xGodMode/godmode",
     "compound": "https://github.com/compound-finance/compound-protocol.git#v2.6-rc3",
     "uniswap": "https://github.com/Uniswap/uniswap-v2-core.git#v1.0.0"
   },
