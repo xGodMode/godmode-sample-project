@@ -1,6 +1,6 @@
 {
   "name": "godmode-sample-project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "dependencies": {
     "godmode-for-test": "0.0.3",
