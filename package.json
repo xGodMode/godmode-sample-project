@@ -8,8 +8,9 @@
     "uniswap": "https://github.com/Uniswap/uniswap-v2-core.git#v1.0.0"
   },
   "godmode": {
-    "contracts": [
-      "GMDai"
+    "protocols": [
+      "Maker",
+      "UniswapV2"
     ]
   }
 }
