@@ -9,7 +9,7 @@ const HasOwnerShip = artifacts.require("HasOwnerShip");
 const HasOwnerShipInstrumented = artifacts.require("HasOwnerShipInstrumented");
 const HasOwnerShipSETOWNER = artifacts.require("HasOwnerShipSETOWNER");
 
-const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";  
+const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 let GODMODE = new GM("development", "<rpc_endpoint>");
 
@@ -37,8 +37,8 @@ contract("Custom Contracts", function(accounts) {
 
     it("does not allow Beth to access the priviledgedAction", async function(){
       assert.equal(await hasOwnerShipContract.flag(), false);
-      await assertTxFail(() => 
-        hasOwnerShipContract.priviledgedAction(true ,{from: Beth}), 
+      await assertTxFail(() =>
+        hasOwnerShipContract.priviledgedAction(true ,{from: Beth}),
         "revert"
       );
       assert.equal(await hasOwnerShipContract.flag(), false);
@@ -64,10 +64,10 @@ contract("Custom Contracts", function(accounts) {
 
       // Beth flips the boolean
       await GODMODE.executeAs(
-        hasOwnerShipContract, 
-        HasOwnerShipInstrumented, 
+        hasOwnerShipContract,
+        HasOwnerShipInstrumented,
         "priviledgedAction",
-        true, 
+        true,
         {from: Beth}
       );
 
@@ -84,9 +84,9 @@ contract("Custom Contracts", function(accounts) {
 
       // Beth sets themself as the owner
       await GODMODE.executeAs(
-        hasOwnerShipContract, 
-        HasOwnerShipSETOWNER, 
-        "setOwner", 
+        hasOwnerShipContract,
+        HasOwnerShipSETOWNER,
+        "setOwner",
         {from: Beth}
       );
 
@@ -115,7 +115,7 @@ async function assertTxFail(promise, msg) {
     if (!txFailed) {
       assert.fail("Unexpected error when checking for transaction failure", err.message);
     }
-    
+
     if (process.env.COVERAGE === 'true') {
       return; // skip on checking the error message
     }
@@ -124,7 +124,7 @@ async function assertTxFail(promise, msg) {
     assert(err.message.endsWith(msg), `Expected exception message "${msg}" was different from the actual exception message: "${err.message}". Stack: ${err.stack}`);
     return;
   }
-  
+
   assert.fail("The transaction was expected to fail, but it did not");
 }
 

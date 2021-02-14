@@ -10,7 +10,7 @@ const UniswapV2FactoryContract = artifacts.require("UniswapV2FactoryContract");
 const CErc20Contract = artifacts.require("CErc20Contract");
 const Dai = artifacts.require("Dai");
 
-const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";  
+const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 const GODMODE = new GM("development", "<rpc_endpoint>");
 
@@ -69,7 +69,7 @@ contract("External Contracts", function(accounts) {
       let endingFeeCollector = await factoryContract.feeTo();
       assert.equal(endingFeeCollector, Beth);
       dimlog(`Ending fee collector is Beth: ${endingFeeCollector}`);
-    });    
+    });
   });
 
   describe("\nMainnet Compound", function(){
@@ -86,11 +86,11 @@ contract("External Contracts", function(accounts) {
       dimlog(`Carl's starting balance: ${startingBalance.toString()}`);
 
       // Give address tokens
-      await GODMODE.CToken_giveAddrTokens(mainnetCBAT, Carl, 100); 
+      await GODMODE.CToken_giveAddrTokens(mainnetCBAT, Carl, 100);
 
       // Balance ends at 100!
       let endingBalance = await cBAT.balanceOf(Carl);
-      assert.equal(endingBalance, 100);       
+      assert.equal(endingBalance, 100);
       dimlog(`Carl's ending balance: ${endingBalance.toString()}`);
     })
   });
