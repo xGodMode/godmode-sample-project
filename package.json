@@ -6,5 +6,10 @@
     "godmode-for-test": "0.0.3",
     "compound": "https://github.com/compound-finance/compound-protocol.git#v2.6-rc3",
     "uniswap": "https://github.com/Uniswap/uniswap-v2-core.git#v1.0.0"
+  },
+  "godmode": {
+    "contracts": [
+      "GMDai"
+    ]
   }
 }
