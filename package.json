@@ -4,8 +4,11 @@
   "license": "MIT",
   "dependencies": {
     "@xgm/godmode": "https://github.com/xGodMode/godmode",
-    "compound": "https://github.com/compound-finance/compound-protocol.git#v2.6-rc3",
-    "uniswap": "https://github.com/Uniswap/uniswap-v2-core.git#v1.0.0"
+    "compound": "git@github.com:compound-finance/compound-protocol.git#v2.6",
+    "uniswap": "git@github.com:Uniswap/uniswap-v2-core.git#v1.0.0"
+  },
+  "peerDependencies": {
+    "truffle": "^5.1.66"
   },
   "godmode": {
     "protocols": [
