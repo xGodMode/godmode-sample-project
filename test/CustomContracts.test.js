@@ -1,17 +1,15 @@
 /**
  * CustomContracts.test.js
  *
- * GodMode demo of custom, user-defined contracts deployed on mainnet.
+ * GodMode demo of custom, user-defined contracts deployed on dev.
  */
 
-const GM = require("@xgm/godmode");
+const { GM } = require("@xgm/godmode");
 const HasOwnerShip = artifacts.require("HasOwnerShip");
-const HasOwnerShipInstrumented = artifacts.require("HasOwnerShipInstrumented");
-const HasOwnerShipSETOWNER = artifacts.require("HasOwnerShipSETOWNER");
+const GMHasOwnerShip = artifacts.require("GMHasOwnerShip");
+const GMHasOwnerShipSetOwner = artifacts.require("GMHasOwnerShipSetOwner");
 
-const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
-
-let GODMODE = new GM("development", "<rpc_endpoint>");
+const GODMODE = new GM("dev", "ws://127.0.0.1:8545");
 
 contract("Custom Contracts", function(accounts) {
 
@@ -63,12 +61,12 @@ contract("Custom Contracts", function(accounts) {
       assert.equal(startingFlag, false);
 
       // Beth flips the boolean
-      await GODMODE.executeAs(
-        hasOwnerShipContract,
-        HasOwnerShipInstrumented,
+      await GODMODE.execute(
+        hasOwnerShipContract.address,
+        GMHasOwnerShip.abi,
+        GMHasOwnerShip.deployedBytecode,
         "priviledgedAction",
-        true,
-        {from: Beth}
+        {args: [true], from: Beth}
       );
 
       // Boolean ends as true
@@ -83,9 +81,10 @@ contract("Custom Contracts", function(accounts) {
       assert.equal(startingOwner, Alex);
 
       // Beth sets themself as the owner
-      await GODMODE.executeAs(
-        hasOwnerShipContract,
-        HasOwnerShipSETOWNER,
+      await GODMODE.execute(
+        hasOwnerShipContract.address,
+        GMHasOwnerShipSetOwner.abi,
+        GMHasOwnerShipSetOwner.deployedBytecode,
         "setOwner",
         {from: Beth}
       );
