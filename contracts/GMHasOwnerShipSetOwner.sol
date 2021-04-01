@@ -1,6 +1,6 @@
 pragma solidity 0.5.16;
 
-contract HasOwnerShipSETOWNER {
+contract GMHasOwnerShipSetOwner {
   
   address public owner;
   bool public flag;
@@ -10,7 +10,7 @@ contract HasOwnerShipSETOWNER {
     flag = false;
   }
 
-  modifier onlyOwner(){
+  modifier onlyOwner() {
     require(msg.sender == owner);
     _;
   }

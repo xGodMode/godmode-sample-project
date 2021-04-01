@@ -5,19 +5,15 @@
  *
  */
 
-const GM = require("godmode-for-test");
-const HasOwnerShip = artifacts.require("HasOwnerShip");
-const HasOwnerShipInstrumented = artifacts.require("HasOwnerShipInstrumented");
-const HasOwnerShipSETOWNER = artifacts.require("HasOwnerShipSETOWNER");
-const UniswapV2ERC20Contract = artifacts.require("UniswapV2ERC20Contract");
+const { GM } = require("@xgm/godmode");
 const UniswapV2FactoryContract = artifacts.require("UniswapV2FactoryContract");
-const UniswapV2PairContract = artifacts.require("UniswapV2PairContract");
 const CErc20Contract = artifacts.require("CErc20Contract");
 const Dai = artifacts.require("Dai");
 
-const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";  
+const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
-const GODMODE = new GM("development", "<rpc_endpoint>");
+// IMPORTANT: You must run GodMode Ganache with a mainnet fork for this to work
+const GODMODE = new GM("ethereum:mainnet", "ws://127.0.0.1:8545");
 
 function dimlog(msg) {
   console.log("\x1b[2m%s\x1b[0m", msg);
@@ -44,7 +40,7 @@ contract("External Contracts", function(accounts) {
       // Mint x times
       let x = Math.floor(Math.random() * 10) + 1;
       for(var i = 0 ; i < x; i++){
-        await GODMODE.mintDai(Alex, 100);
+        await GODMODE.Maker.mintDai(Alex, 100);
       }
 
       // Balance ends at 100x!
@@ -68,13 +64,13 @@ contract("External Contracts", function(accounts) {
       dimlog(`Starting fee collector is no one: ${startingFeeCollector}`);
 
       // Set feeTo
-      await GODMODE.uniswapV2Factory_setFeeTo(Beth);
+      await GODMODE.UniswapV2.Factory_setFeeTo(Beth);
 
       // feeTo is set!
       let endingFeeCollector = await factoryContract.feeTo();
       assert.equal(endingFeeCollector, Beth);
       dimlog(`Ending fee collector is Beth: ${endingFeeCollector}`);
-    });    
+    });
   });
 
   describe("\nMainnet Compound", function(){
@@ -91,11 +87,11 @@ contract("External Contracts", function(accounts) {
       dimlog(`Carl's starting balance: ${startingBalance.toString()}`);
 
       // Give address tokens
-      await GODMODE.CToken_giveAddrTokens(mainnetCBAT, Carl, 100); 
+      await GODMODE.Compound.mintCErc20(mainnetCBAT, Carl, 100);
 
       // Balance ends at 100!
       let endingBalance = await cBAT.balanceOf(Carl);
-      assert.equal(endingBalance, 100);       
+      assert.equal(endingBalance, 100);
       dimlog(`Carl's ending balance: ${endingBalance.toString()}`);
     })
   });

@@ -1,22 +1,15 @@
 /**
  * CustomContracts.test.js
  *
- * GodMode demo of custom, user-defined contracts deployed on mainnet.
+ * GodMode demo of custom, user-defined contracts deployed on dev.
  */
 
-const GM = require("godmode-for-test");
+const { GM } = require("@xgm/godmode");
 const HasOwnerShip = artifacts.require("HasOwnerShip");
-const HasOwnerShipInstrumented = artifacts.require("HasOwnerShipInstrumented");
-const HasOwnerShipSETOWNER = artifacts.require("HasOwnerShipSETOWNER");
-const UniswapV2ERC20Contract = artifacts.require("UniswapV2ERC20Contract");
-const UniswapV2FactoryContract = artifacts.require("UniswapV2FactoryContract");
-const UniswapV2PairContract = artifacts.require("UniswapV2PairContract");
-const CErc20Contract = artifacts.require("CErc20Contract");
-const Dai = artifacts.require("Dai");
+const GMHasOwnerShip = artifacts.require("GMHasOwnerShip");
+const GMHasOwnerShipSetOwner = artifacts.require("GMHasOwnerShipSetOwner");
 
-const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";  
-
-let GODMODE = new GM("development", "<rpc_endpoint>");
+const GODMODE = new GM("dev", "ws://127.0.0.1:8545");
 
 contract("Custom Contracts", function(accounts) {
 
@@ -42,8 +35,8 @@ contract("Custom Contracts", function(accounts) {
 
     it("does not allow Beth to access the priviledgedAction", async function(){
       assert.equal(await hasOwnerShipContract.flag(), false);
-      await assertTxFail(() => 
-        hasOwnerShipContract.priviledgedAction(true ,{from: Beth}), 
+      await assertTxFail(() =>
+        hasOwnerShipContract.priviledgedAction(true ,{from: Beth}),
         "revert"
       );
       assert.equal(await hasOwnerShipContract.flag(), false);
@@ -68,12 +61,12 @@ contract("Custom Contracts", function(accounts) {
       assert.equal(startingFlag, false);
 
       // Beth flips the boolean
-      await GODMODE.executeAs(
-        hasOwnerShipContract, 
-        HasOwnerShipInstrumented, 
+      await GODMODE.execute(
+        hasOwnerShipContract.address,
+        GMHasOwnerShip.abi,
+        GMHasOwnerShip.deployedBytecode,
         "priviledgedAction",
-        true, 
-        {from: Beth}
+        {args: [true], from: Beth}
       );
 
       // Boolean ends as true
@@ -88,10 +81,11 @@ contract("Custom Contracts", function(accounts) {
       assert.equal(startingOwner, Alex);
 
       // Beth sets themself as the owner
-      await GODMODE.executeAs(
-        hasOwnerShipContract, 
-        HasOwnerShipSETOWNER, 
-        "setOwner", 
+      await GODMODE.execute(
+        hasOwnerShipContract.address,
+        GMHasOwnerShipSetOwner.abi,
+        GMHasOwnerShipSetOwner.deployedBytecode,
+        "setOwner",
         {from: Beth}
       );
 
@@ -120,7 +114,7 @@ async function assertTxFail(promise, msg) {
     if (!txFailed) {
       assert.fail("Unexpected error when checking for transaction failure", err.message);
     }
-    
+
     if (process.env.COVERAGE === 'true') {
       return; // skip on checking the error message
     }
@@ -129,7 +123,7 @@ async function assertTxFail(promise, msg) {
     assert(err.message.endsWith(msg), `Expected exception message "${msg}" was different from the actual exception message: "${err.message}". Stack: ${err.stack}`);
     return;
   }
-  
+
   assert.fail("The transaction was expected to fail, but it did not");
 }
 

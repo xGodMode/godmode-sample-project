@@ -1,6 +1,6 @@
 pragma solidity 0.5.16;
 
-contract HasOwnerShipInstrumented {
+contract GMHasOwnerShip {
   
   address public owner;
   bool public flag;
