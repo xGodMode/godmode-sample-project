@@ -7,7 +7,7 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
 
 ### Pre-Requisites
 ---
-1. Install the Truffle framework via `$ npm install -g truffle`.
+1. Install the [Truffle framework](https://github.com/trufflesuite/truffle) via `$ npm install -g truffle`.
 
 2. Clone the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli) repository.
 
