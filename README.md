@@ -12,7 +12,7 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
 
 2. Open a shell/cmd in your **godmode-ganache-cli** directory and run `$ npm run start`
 
-3. In another shell/cmd, clone this repository and run `$ npm install` in **godmode-sample-projects** 
+3. In another shell/cmd, clone this repository into **godmode-sample-projects** , cd into this new directory and run `$ npm install` 
 
 4. In the same directory, install the GodMode contracts by running `$ npx godmode install`
 
