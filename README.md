@@ -7,14 +7,13 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
 ### Usage
 
 ---
+1. Install the Truffle framework via `$ npm install -g truffle`
 
-1. Download and install dependencies for the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli)
+2. Download and install dependencies for the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli)
 
-2. Open a shell/cmd in your **godmode-ganache-cli** directory and run `$ npm run start`
+3. Open a shell/cmd in your **godmode-ganache-cli** directory and run `$ npm run start`
 
-3. In another shell/cmd, clone this repository into **godmode-sample-projects** , cd into this new directory and run `$ npm install` 
-
-4. In the same directory, install the GodMode contracts by running `$ npx godmode install`
+4. In another shell/cmd, clone this repository into **godmode-sample-projects** , cd into this new directory and run `$ npm install` 
 
 5. In `CustomContracts.test.js`, replace `'<rpc_endpoint>'` with the endpoint that **godmode-ganache-cli** is running on
 
