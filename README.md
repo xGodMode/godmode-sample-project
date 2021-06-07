@@ -9,7 +9,7 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
 ---
 1. Install the Truffle framework via `$ npm install -g truffle`.
 
-2. Install and run an instance of the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli).
+2. Clone the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli) repository.
 
 
 ### Custom Contracts
