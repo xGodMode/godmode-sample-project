@@ -24,7 +24,7 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
    ```js
    const GODMODE = new GM('development', 'http://127.0.0.1:8545');
    ```
-   By default, GodMode Ganache CLI runs at `http://127.0.0.1:8545`, so use this endpoint unless you're running a custom configuration.
+
 
 4. Finally, `cd` into the `test` folder and run `$ truffle test CustomContracts.test.js`
 
