@@ -1,20 +1,20 @@
 {
-  "name": "godmode-sample-project",
-  "version": "0.0.2",
-  "license": "MIT",
-  "dependencies": {
-    "@xgm/godmode": "https://github.com/xGodMode/godmode",
-    "compound": "git@github.com:compound-finance/compound-protocol.git#v2.6",
-    "uniswap": "git@github.com:Uniswap/uniswap-v2-core.git#v1.0.0"
-  },
-  "peerDependencies": {
-    "truffle": "^5.1.66"
-  },
-  "godmode": {
-    "protocols": [
-      "Maker",
-      "Compound",
-      "UniswapV2"
-    ]
-  }
+	"name": "godmode-sample-project",
+	"version": "0.0.2",
+	"license": "MIT",
+	"dependencies": {
+		"@xgm/godmode": "^0.1.6",
+		"compound": "git@github.com:compound-finance/compound-protocol.git#v2.6",
+		"uniswap": "git@github.com:Uniswap/uniswap-v2-core.git#v1.0.0"
+	},
+	"peerDependencies": {
+		"truffle": "^5.1.66"
+	},
+	"godmode": {
+		"protocols": [
+			"Maker",
+			"Compound",
+			"UniswapV2"
+		]
+	}
 }
