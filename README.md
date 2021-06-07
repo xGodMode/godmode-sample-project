@@ -1,4 +1,3 @@
-
 ![GodMode Logo](https://godmode-public-assets.s3.amazonaws.com/godmode_logo.jpg)
 
 This sample project demonstrates how GodMode allows you to gain control of contracts running on an instance of Ganache CLI.
@@ -7,9 +6,11 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
 
 ### Pre-Requisites
 ---
-1. Install the [Truffle framework](https://github.com/trufflesuite/truffle) via `$ npm install -g truffle`.
+1. Install the Truffle framework via `$ npm install -g truffle`.
 
-2. Clone the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli) repository.
+2. Install and run an instance of the [GodMode Ganache CLI](https://github.com/xGodMode/godmode-ganache-cli).
+
+3. An [Infura](https:/infura.io) **Mainnet** endpoint (for demonstrating the external contractcs).  
 
 
 ### Custom Contracts
@@ -24,7 +25,7 @@ With `CustomContracts.test.js`, Alex has a contract with a privileged action (a 
    ```js
    const GODMODE = new GM('development', 'http://127.0.0.1:8545');
    ```
-
+   By default, GodMode Ganache CLI runs at `http://127.0.0.1:8545`, so use this endpoint unless you're running a custom configuration.
 
 4. Finally, `cd` into the `test` folder and run `$ truffle test CustomContracts.test.js`
 
@@ -41,4 +42,19 @@ GodMode runs the tests showing before and after taking control of the a contract
 
 ### External Contracts
 ---
-This section coming soon...
+1. At a command line in your **godmode-ganache-cli** folder, run `$ export INFURA_PROJECT_ID=<your-infura-project-id>` 
+
+2. Run `$ npm run start-fork`.
+
+3. In another shell/cmd, clone this repository into **godmode-sample-projects** , cd into this new directory and run `$ npm install` 
+
+4. Install the GodMode versions of the external contracts via `$ npx godmode install` 
+
+5. By default, **GodMode Ganache CLI** creates an endpoint at `http://127.0.0.1:8545`. In `ExternalContracts.test.js` you can customise this by editing the line below. 
+
+   ```js
+   const GODMODE = new GM('development', 'http://127.0.0.1:8545');
+   ```
+   By default, GodMode Ganache CLI runs at `http://127.0.0.1:8545`, so use this endpoint unless you're running a custom configuration.
+
+6. Finally, `cd` into the `test` folder and run `$ truffle test ExternalContracts.test.js`
