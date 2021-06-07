@@ -53,7 +53,7 @@ GodMode runs the tests showing before and after taking control of the a contract
 5. By default, **GodMode Ganache CLI** creates an endpoint at `http://127.0.0.1:8545`. In `ExternalContracts.test.js` you can customise this by editing the line below. 
 
    ```js
-   const GODMODE = new GM('development', 'http://127.0.0.1:8545');
+   const GODMODE = new GM("ethereum:mainnet", "ws://127.0.0.1:8545");
    ```
    By default, GodMode Ganache CLI runs at `http://127.0.0.1:8545`, so use this endpoint unless you're running a custom configuration.
 
